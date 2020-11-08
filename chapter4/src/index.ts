@@ -1,26 +1,11 @@
-// 数値列挙型
-enum Language {
-  English,
-  Japanese
+
+// 可変長引数の関数
+// 型が安全でない
+function sumVariadicUnSafe() {
+  return Array.from(arguments)
+              .reduce((total, current) => total + current, 0);
 }
-
-console.log(Language.English);  // 0
-console.log(Language.Japanese); // 1
-
-// 文字列列挙型
-enum Locale {
-  English = "en",
-  Japanese = "ja"
+// 型安全である
+function sumVariadicSafe(...numbers: number[]) :number {
+  return numbers.reduce((total, current) => total + current, 0);
 }
-
-console.log(Locale.English);  // en
-console.log(Locale.Japanese); // jp
-
-let a = 1042;                 // number
-let b = 'apples and orange';  // string
-const c = 'pineapple';        // pineapple
-let d = [true, true, false];  // boolean[]
-let e = { type: 'ficus' };    // { type: string }
-let f = [1, false];           // (number | boolean)[]
-const g = [3];                // number[]
-let h = null;                 // any
